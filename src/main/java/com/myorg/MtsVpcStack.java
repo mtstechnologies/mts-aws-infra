@@ -7,6 +7,9 @@ import software.amazon.awscdk.services.ec2.Vpc;
 
 
 public class MtsVpcStack extends Stack {
+	
+	private Vpc vpc;
+	
     public MtsVpcStack(final Construct scope, final String id) {
         this(scope, id, null);
     }
@@ -19,5 +22,9 @@ public class MtsVpcStack extends Stack {
                 .build();
 
 
+    }
+    
+    public Vpc getVpc() {
+    	return vpc;
     }
 }

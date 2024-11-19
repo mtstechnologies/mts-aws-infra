@@ -10,8 +10,11 @@ public class MtsAwsInfraApp {
     public static void main(final String[] args) {
         App app = new App();
 
-        new MtsVpcStack(app, "Vpc");
+        MtsVpcStack mtsVpcStack = new MtsVpcStack(app, "Vpc");
+        MtsClusterStack mtsClusterStack = new MtsClusterStack(app, "cluster", mtsVpcStack.getVpc());
 
+        mtsClusterStack.addDependency(mtsVpcStack); //para evitar conflitos,caso o cluster seja construido antes da vpc, ele ficara esperando
+        
         app.synth();
     }
 }
