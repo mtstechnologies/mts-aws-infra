@@ -15,6 +15,9 @@ public class MtsAwsInfraApp {
 
         mtsClusterStack.addDependency(mtsVpcStack); //para evitar conflitos,caso o cluster seja construido antes da vpc, ele ficara esperando
         
+        MtsServiceStack mtsServiceStack = new MtsServiceStack(app, "Service", mtsClusterStack.getCluster());
+        mtsServiceStack.addDependency(mtsClusterStack);
+        
         app.synth();
     }
 }

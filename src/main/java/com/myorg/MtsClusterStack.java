@@ -8,6 +8,9 @@ import software.amazon.awscdk.services.ecs.Cluster;
 
 
 public class MtsClusterStack extends Stack {
+	
+	private Cluster cluster;
+	
     public MtsClusterStack(final Construct scope, final String id, final Vpc vpc) {
         this(scope, id, null, vpc);
     }
@@ -20,4 +23,9 @@ public class MtsClusterStack extends Stack {
                 .vpc(vpc)
                 .build();
     }
+    
+    public Cluster getCluster() {
+    	return cluster;
+    }
+    
 }
