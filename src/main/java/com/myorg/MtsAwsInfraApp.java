@@ -10,7 +10,7 @@ public class MtsAwsInfraApp {
     public static void main(final String[] args) {
         App app = new App();
 
-      
+        new MtsVpcStack(app, "Vpc");
 
         app.synth();
     }
